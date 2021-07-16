@@ -64,7 +64,8 @@ const Text: React.AbstractComponent<TextProps, HTMLElement & PlatformMethods> = 
       onSelectionChangeShouldSetResponderCapture,
       onStartShouldSetResponder,
       onStartShouldSetResponderCapture,
-      selectable
+      selectable,
+      className
     } = props;
 
     const hasTextAncestor = React.useContext(TextAncestorContext);
@@ -74,7 +75,8 @@ const Text: React.AbstractComponent<TextProps, HTMLElement & PlatformMethods> = 
       classes.text,
       hasTextAncestor === true && classes.textHasAncestor,
       numberOfLines === 1 && classes.textOneLine,
-      numberOfLines != null && numberOfLines > 1 && classes.textMultiLine
+      numberOfLines != null && numberOfLines > 1 && classes.textMultiLine,
+      className
     ];
     const style = [
       props.style,

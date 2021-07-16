@@ -129,7 +129,8 @@ const TextInput: React.AbstractComponent<
     secureTextEntry = false,
     selection,
     selectTextOnFocus,
-    spellCheck
+    spellCheck,
+    className
   } = props;
 
   let type;
@@ -310,7 +311,7 @@ const TextInput: React.AbstractComponent<
   }, [hostRef, selection]);
 
   const component = multiline ? 'textarea' : 'input';
-  const classList = [classes.textinput];
+  const classList = [classes.textinput, className];
   const style = StyleSheet.compose(props.style, placeholderTextColor && { placeholderTextColor });
 
   useElementLayout(hostRef, onLayout);

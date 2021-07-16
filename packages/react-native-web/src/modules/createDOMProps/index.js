@@ -391,7 +391,9 @@ const createDOMProps = (elementType, props) => {
   const { className, style } = styleResolver.resolve(reactNativeStyle, finalClassList);
 
   if (className != null && className !== '') {
-    domProps.className = className;
+    domProps.className = [className, domProps.className]
+      .filter((c) => c != null && c !== '')
+      .join(' ');
   }
 
   if (style) {

@@ -61,7 +61,8 @@ const View: React.AbstractComponent<ViewProps, HTMLElement & PlatformMethods> = 
       onSelectionChangeShouldSetResponder,
       onSelectionChangeShouldSetResponderCapture,
       onStartShouldSetResponder,
-      onStartShouldSetResponderCapture
+      onStartShouldSetResponderCapture,
+      className
     } = props;
 
     if (process.env.NODE_ENV !== 'production') {
@@ -101,6 +102,7 @@ const View: React.AbstractComponent<ViewProps, HTMLElement & PlatformMethods> = 
     const style = StyleSheet.compose(hasTextAncestor && styles.inline, props.style);
 
     const supportedProps = pickProps(props);
+    const classList = [classes.view, className];
     supportedProps.classList = classList;
     supportedProps.style = style;
     if (props.href != null) {
@@ -147,8 +149,6 @@ const classes = css.create({
     zIndex: 0
   }
 });
-
-const classList = [classes.view];
 
 const styles = StyleSheet.create({
   inline: {

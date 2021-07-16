@@ -183,5 +183,6 @@ export type ViewProps = {
   onTouchStartCapture?: (e: any) => void,
   onWheel?: (e: any) => void,
   href?: ?string,
-  hrefAttrs?: ?{ download?: ?boolean, rel?: ?string, target?: ?string }
+  hrefAttrs?: ?{ download?: ?boolean, rel?: ?string, target?: ?string },
+  className?: ?string
 };
