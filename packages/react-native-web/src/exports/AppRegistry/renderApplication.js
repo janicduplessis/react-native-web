@@ -12,14 +12,15 @@ import type { ComponentType, Node } from 'react';
 
 import AppContainer from './AppContainer';
 import invariant from 'fbjs/lib/invariant';
-import render, { hydrate } from '../render';
 import styleResolver from '../StyleSheet/styleResolver';
 import React from 'react';
+import ReactDOM from 'react-dom';
+
+const roots = new Map();
 
 export default function renderApplication<Props: Object>(
   RootComponent: ComponentType<Props>,
   WrapperComponent?: ?ComponentType<*>,
-  callback?: () => void,
   options: {
     hydrate: boolean,
     initialProps: Props,
@@ -27,17 +28,26 @@ export default function renderApplication<Props: Object>(
   }
 ) {
   const { hydrate: shouldHydrate, initialProps, rootTag } = options;
-  const renderFn = shouldHydrate ? hydrate : render;
 
   invariant(rootTag, 'Expect to have a valid rootTag, instead got ', rootTag);
 
-  renderFn(
+  const rootElement = (
     <AppContainer WrapperComponent={WrapperComponent} rootTag={rootTag}>
       <RootComponent {...initialProps} />
-    </AppContainer>,
-    rootTag,
-    callback
+    </AppContainer>
   );
+  let root = roots.get(rootTag);
+  if (root == null) {
+    if (shouldHydrate) {
+      root = ReactDOM.hydrateRoot(rootTag, rootElement);
+    } else {
+      root = ReactDOM.createRoot(rootTag);
+      root.render(rootElement);
+    }
+    roots.set(rootTag, root);
+  } else {
+    root.render(rootElement);
+  }
 }
 
 export function getApplication(

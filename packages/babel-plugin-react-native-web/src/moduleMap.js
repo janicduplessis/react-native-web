@@ -64,7 +64,6 @@ module.exports = {
   createElement: true,
   findNodeHandle: true,
   processColor: true,
-  render: true,
   unmountComponentAtNode: true,
   useColorScheme: true,
   useWindowDimensions: true

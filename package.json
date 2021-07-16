@@ -62,9 +62,9 @@
     "lint-staged": "^10.5.4",
     "npm-run-all": "^4.1.3",
     "prettier": "^2.2.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1"
+    "react": "^18.0.0-alpha-d5de45820-20210714",
+    "react-dom": "^18.0.0-alpha-d5de45820-20210714",
+    "react-test-renderer": "^18.0.0-alpha-d5de45820-20210714"
   },
   "workspaces": [
     "packages/*"

@@ -17,14 +17,6 @@ import {
 import useHover from '..';
 import { testOnly_resetActiveModality } from '../../modality';
 
-function createRoot(rootNode) {
-  return {
-    render(element) {
-      ReactDOM.render(element, rootNode);
-    }
-  };
-}
-
 describeWithPointerEvent('useHover', (hasPointerEvents) => {
   let root;
   let rootNode;
@@ -33,7 +25,7 @@ describeWithPointerEvent('useHover', (hasPointerEvents) => {
     setPointerEvent(hasPointerEvents);
     rootNode = document.createElement('div');
     document.body.appendChild(rootNode);
-    root = createRoot(rootNode);
+    root = ReactDOM.createRoot(rootNode);
   });
 
   afterEach(() => {

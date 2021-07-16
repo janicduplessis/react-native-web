@@ -74,7 +74,6 @@ export default class AppRegistry {
         renderApplication(
           componentProviderInstrumentationHook(componentProvider),
           wrapperComponentProvider && wrapperComponentProvider(appParameters),
-          appParameters.callback,
           {
             hydrate: appParameters.hydrate || false,
             initialProps: appParameters.initialProps || emptyObject,

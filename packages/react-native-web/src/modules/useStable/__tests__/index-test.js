@@ -12,14 +12,6 @@ import * as ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import useStable from '..';
 
-function createRoot(rootNode) {
-  return {
-    render(element) {
-      ReactDOM.render(element, rootNode);
-    }
-  };
-}
-
 describe('useStable', () => {
   let root;
   let rootNode;
@@ -35,7 +27,7 @@ describe('useStable', () => {
     spy = {};
     rootNode = document.createElement('div');
     document.body.appendChild(rootNode);
-    root = createRoot(rootNode);
+    root = ReactDOM.createRoot(rootNode);
   });
 
   afterEach(() => {

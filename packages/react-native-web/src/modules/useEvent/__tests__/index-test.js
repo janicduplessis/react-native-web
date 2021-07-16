@@ -13,14 +13,6 @@ import { act } from 'react-dom/test-utils';
 import { createEventTarget } from 'dom-event-testing-library';
 import useEvent from '..';
 
-function createRoot(rootNode) {
-  return {
-    render(element) {
-      ReactDOM.render(element, rootNode);
-    }
-  };
-}
-
 describe('use-event', () => {
   let root;
   let rootNode;
@@ -28,7 +20,7 @@ describe('use-event', () => {
   beforeEach(() => {
     rootNode = document.createElement('div');
     document.body.appendChild(rootNode);
-    root = createRoot(rootNode);
+    root = ReactDOM.createRoot(rootNode);
   });
 
   afterEach(() => {

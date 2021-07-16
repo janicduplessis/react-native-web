@@ -83,12 +83,5 @@ describe('AppRegistry', () => {
     afterEach(() => {
       document.body.removeChild(rootTag);
     });
-
-    test('callback after render', () => {
-      const callback = jest.fn();
-      AppRegistry.registerComponent('App', () => NoopComponent);
-      AppRegistry.runApplication('App', { initialProps: {}, rootTag, callback });
-      expect(callback).toHaveBeenCalledTimes(1);
-    });
   });
 });

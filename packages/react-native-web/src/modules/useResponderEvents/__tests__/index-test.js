@@ -15,13 +15,15 @@ import {
 
 describe('useResponderEvents', () => {
   let container;
+  let root;
 
   function render(element) {
-    ReactDOM.render(element, container);
+    root.render(element);
   }
 
   beforeEach(() => {
     container = document.createElement('div');
+    root = ReactDOM.createRoot(container);
     document.body.appendChild(container);
   });
 
@@ -29,6 +31,7 @@ describe('useResponderEvents', () => {
     render(null);
     document.body.removeChild(container);
     container = null;
+    root = null;
     // make sure all tests end with the current responder being reset
     terminateResponder();
     // make sure all tests reset state machine tracking pointers on the mock surface

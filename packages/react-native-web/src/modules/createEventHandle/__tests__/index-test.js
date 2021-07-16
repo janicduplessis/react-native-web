@@ -14,14 +14,6 @@ import { act } from 'react-dom/test-utils';
 import { createEventTarget } from 'dom-event-testing-library';
 import createEventHandle from '..';
 
-function createRoot(rootNode) {
-  return {
-    render(element) {
-      ReactDOM.render(element, rootNode);
-    }
-  };
-}
-
 describe('create-event-handle', () => {
   let root;
   let rootNode;
@@ -29,7 +21,7 @@ describe('create-event-handle', () => {
   beforeEach(() => {
     rootNode = document.createElement('div');
     document.body.appendChild(rootNode);
-    root = createRoot(rootNode);
+    root = ReactDOM.createRoot(rootNode);
   });
 
   afterEach(() => {
@@ -52,7 +44,7 @@ describe('create-event-handle', () => {
     }
 
     const output = ReactDOMServer.renderToString(<Component />);
-    expect(output).toBe('<div data-reactroot=""></div>');
+    expect(output).toBe('<div></div>');
   });
 
   describe('createEventTarget()', () => {
